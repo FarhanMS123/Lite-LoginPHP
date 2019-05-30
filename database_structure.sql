@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `user_login`
 --
 
-CREATE TABLE `user_login` (
+CREATE TABLE `user_info` (
   `id` int(11) NOT NULL,
   `username` tinytext NOT NULL,
   `passhash` tinytext NOT NULL
