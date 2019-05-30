@@ -24,6 +24,7 @@ This is a simple login api for php. This Login is using session and database to 
 For quick configuration, just create a database and import the `database_structure.sql` to the database using phpMyAdmin.
 
 Here are the structure of database's tables :
+
 | Table Name   | Colomn Name  | Data Type | Input Type   | Values                                         | Notes                                                                            |
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | user_info    | user_id      | int       | number       | begin from 1                                   |                                                                                  |
