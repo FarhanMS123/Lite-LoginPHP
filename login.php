@@ -25,7 +25,7 @@
 	}
 	
 	//connect to database
-	$db_type="mysql";
+	$db_type="mariaDB";
 	$conn = new mysqli($db_servername, $db_username, $db_password, $db_dbname);
 		
 	//check Connection
@@ -37,14 +37,14 @@
 	function getUserInfo($id){
 		global $conn;
 		$id = (int)$id;
-		$req1 = $conn->query("SELECT `id`, `username`, `passhash` FROM `user_login` WHERE `id`=$id");
+		$req1 = $conn->query("SELECT `user_id`, `username`, `passhash` FROM `user_info` WHERE `id`=$id");
 		if($req1->num_rows != 1) return false;
 		return $req1->fetch_assoc();
 	}
 	function getUserInfoByIdentification($username){ //if you want to identify other than username, such as email. chang this var to $username_email
 		global $conn;
 		$username = holdQuotes($username); //change this variable too
-		$req1 = $conn->query("SELECT `id`, `username`, `passhash` FROM `user_login` WHERE `username`='$username'"); //And use OR : `username`='$username_email' OR `email`='$username_email' 
+		$req1 = $conn->query("SELECT `user_id`, `username`, `passhash` FROM `user_info` WHERE `username`='$username'"); //And use OR : `username`='$username_email' OR `email`='$username_email' 
 		if($req1->num_rows != 1) return false;
 		return $req1->fetch_assoc();
 	}
@@ -54,14 +54,14 @@
 		$username = holdQuotes($username);
 		$passhash = password_hash($password, PASSWORD_DEFAULT);
 		
-		$req1 = $conn->query("SELECT MAX(`id`) FROM `user_login`");
-		$res1 = $req1->fetch_assoc()["MAX(`id`)"];
+		$req1 = $conn->query("SELECT MAX(`user_id`) FROM `user_info`");
+		$res1 = $req1->fetch_assoc()["MAX(`user_id`)"];
 		$num = ($res1 != "NULL") ? 1 : ((int)$res1) + 1;
 		
 		$req2 = getUserInfoByIdentification(reholdQuotes($username)); //if you use email to identify too, duplicate this line and change the var name to email var, such as $email
 		if($req2 == false) return false; //add "or $req2_email == false"
 		
-		$req3 = $conn->query("INSERT INTO `user_login`(`id`, `username`, `passhash`) VALUES ($num, '$username', '$passhash')");
+		$req3 = $conn->query("INSERT INTO `user_info`(`user_id`, `username`, `passhash`) VALUES ($num, '$username', '$passhash')");
 		
 		return $req3 ? $num : $req3;
 	}
@@ -69,7 +69,7 @@
 		$id  = holdQuotes($id);
 		$key = holdQuotes($key);
 		$val = holdQuotes($val);
-		$req1 = $conn->query("UPDATE `user_login` SET `$key`='$val' WHERE `id`='$id'");
+		$req1 = $conn->query("UPDATE `user_info` SET `$key`='$val' WHERE `id`='$id'");
 		
 		return $req1;
 	}
