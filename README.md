@@ -19,3 +19,10 @@ This is a simple login api for php. This Login is using session and database to 
 	- Create meta data for user
 	- Create roles for user
 	- Create allowed and dissalowed feature
+
+## Database Configuration
+For quick configuration, just create a database and import the `database_structure.sql` to the database using phpMyAdmin.
+
+Here are the structure of database's tables :
+| Table Name | Colomn Name | Data Type | Input Type | Default Values | Notes |
+------------------------------------------------------------------------------
