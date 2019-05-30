@@ -26,8 +26,8 @@ SET time_zone = "+00:00";
 -- Table structure for table `user_login`
 --
 
-CREATE TABLE `user_login` (
-  `id` int(11) NOT NULL,
+CREATE TABLE `user_info` (
+  `user_id` int(11) NOT NULL,
   `username` tinytext NOT NULL,
   `passhash` tinytext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
