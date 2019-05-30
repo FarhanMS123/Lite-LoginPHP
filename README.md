@@ -4,6 +4,7 @@ This is a simple login api for php. This Login is using session and database to 
 ## Documentation
 - Database Configuration
 - Script Implementation
+	- Setting Enviroments
 	- `register`
 	- `login`
 	- `checkLogin`
