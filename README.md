@@ -55,3 +55,13 @@ Change it under `//enviroment configuration`
 	...
 ?>
 ```
+
+## Script Implementation
+### `login($username, $password, $setSession=true, $valid_data=array())`
+- `$username` \<string\>
+- `$password` \<string\>
+- `$setSession` \<boolean\> is setting to false will make function return true while `$username` and `$password` is valid. Default: true.
+- `$valid_data` \<objects\>
+- return `false` \<boolean\> while `$username` and `$password` is invalid.
+		 `true` \<boolean\> while is valid and `$setSession` is setting to false.
+		 `[user_id, hash]` \<object\> while is valid and `$setSession` is setting to true.
