@@ -1,5 +1,5 @@
 # Lite-LoginPHP
-This is a simple login api for php. This Login is using session and database to identify user that login or not. <br />
+This is a simple login api for php. This Login is using session and database to identify user login. <br />
 
 ## Documentation
 - Database Configuration
