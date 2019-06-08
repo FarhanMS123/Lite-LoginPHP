@@ -60,8 +60,8 @@ Change it under `//enviroment configuration`
 ### `login($username, $password, $setSession=true, $valid_data=array())`
 - `$username` \<string\>
 - `$password` \<string\>
-- `$setSession` \<boolean\> is setting to false will make function return true while `$username` and `$password` is valid. Default: true.
+- `$setSession` \<boolean\> is setting to `false` will make function return `true` while `$username` and `$password` is valid. Default: `true`.
 - `$valid_data` \<objects\>
 - return `false` \<boolean\> while `$username` and `$password` is invalid. <br />
-		 `true` \<boolean\> while is valid and `$setSession` is setting to false. <br />
-		 `[user_id, hash]` \<object\> while is valid and `$setSession` is setting to true. <br />
+	 `true` \<boolean\> while is valid and `$setSession` is setting to `false`. <br />
+	 `[user_id, hash]` \<object\> while is valid and `$setSession` is setting to `true`. <br />
