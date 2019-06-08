@@ -1,17 +1,20 @@
 # Lite-LoginPHP
-This is a simple login api for php. This Login is using session and database to identify user that login or not.
+This is a simple login api for php. This Login is using session and database to identify user that login or not. <br />
 
 ## Documentation
 - Database Configuration
 - Enviroments Configuration
 - Script Implementation
-	- `register`
-	- `login`
-	- `checkLogin`
-	- `logout`
-	- `changeUserInfo`
-	- `getUserInfo`
-	- `getUserInfoByIdentification`
+	- `register($username, $password)`
+	- `login($username, $password, $setSession=true, $valid_data=array())`
+	- `checkLogin($hash, $valid_data=array(), $addExpired=true)`
+	- `logout($hash)`
+	- `changeUserInfo($id, $key, $val)`
+	- `getUserInfo($id)`
+	- `getUserInfoByIdentification($username)`
+	- `holdQuotes($str)`
+	- `reholdQuotes($str)`
+	- `safe_die($code, $status, $desc)`
 - Modify the script
 	- Identify user via email and username
 	- Configuring key-name for session
