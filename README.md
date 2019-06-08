@@ -61,7 +61,31 @@ Change it under `//enviroment configuration`
 - `$username` \<string\>
 - `$password` \<string\>
 - `$setSession` \<boolean\> is setting to `false` will make function return `true` while `$username` and `$password` is valid. Default: `true`.
-- `$valid_data` \<objects\>
+- `$valid_data` \<objects\> is used to identify the request (especially browser). Default: `{}`.
 - return `false` \<boolean\> while `$username` and `$password` is invalid. <br />
 	 `true` \<boolean\> while is valid and `$setSession` is setting to `false`. <br />
 	 `[user_id, hash]` \<object\> while is valid and `$setSession` is setting to `true`. <br />
+
+This function could be used for authenticate and check valid login. <br />
+Example for authenticated user :
+```php
+<?php
+	include "login.php";
+	//Use POST method with ssl for good security.
+	$username = $_POST["username"];
+	$password = $_POST["password"];
+	$valid_data = array(
+		"user_agent"=>$_SERVER['HTTP_USER_AGENT'],
+		"clientIP"=>$_SERVER['REMOTE_HOST'],
+		"forwardedClientIP"=>$_SERVER['HTTP_X_FORWARDED_FOR'] //for proxy server
+	);
+	
+	$login = login($username, $password, true, $valid_data);
+	if($login==false){
+		die("Username or Password are invalid");
+	}else{
+		setcookie("loginSession", $login[1], strtotime("+1 week"), "/");
+		die("You are login in.");
+	}
+?>
+```
