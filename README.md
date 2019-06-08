@@ -3,8 +3,8 @@ This is a simple login api for php. This Login is using session and database to 
 
 ## Documentation
 - Database Configuration
+- Enviroments Configuration
 - Script Implementation
-	- Setting Enviroments
 	- `register`
 	- `login`
 	- `checkLogin`
@@ -21,6 +21,7 @@ This is a simple login api for php. This Login is using session and database to 
 	- Create allowed and dissalowed feature
 
 ## Database Configuration
+This scripts is tested in MariaDB Server for XAMPP (Windows 10). It only support for SQL Database. <br />
 For quick configuration, just create a database and import the `database_structure.sql` to the database using phpMyAdmin.
 
 Here are the structure of database's tables :
@@ -35,3 +36,18 @@ Here are the structure of database's tables :
 |              | created_time | timestamp | time         | time_now                                       |                                                                                  |
 |              | expired_time | timestamp | time         | +1 week from update                            |                                                                                  |
 |              | valid_data   | text      | <json>object |                                                | to identify the request (browser/http call) such as UserAgent or language, etc.  |
+
+## Enviroment Configuration
+After configure the database, you should configure the varibel. You need database hostname, username, password, and database name.<br />
+Change it under `//enviroment configuration`
+```php
+<?php
+	//enviroment configuration
+	$db_servername = "localhost";
+	$db_username = "root";
+	$db_password = "";
+	$db_dbname = "liteLogin";
+	
+	...
+?>
+```
