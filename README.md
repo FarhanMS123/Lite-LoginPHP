@@ -71,6 +71,7 @@ This function could be used for authenticate that check username and password ar
 For authenticate use, set `$setSession` to `false`, and it would return true if username and password are correct. And would return false if username and password are invalid.
 
 For login use, set `$setSession` to `true`, and it would return array `[0=>user_id, 1=>hash]` while username and password are correct. You should set cookie with 1 week expired using hash for the value of the cookie. For security reason, `$valid_array` is should be filled with request (especially browser) identity. You could get it from headers, such as `User-Agent`, `X-Forwaded-For`. Or you could get client ip or client port (this is only recommended if client used static ip or server is not using proxy). <br />
+
 Example for login :
 ```php
 <?php
