@@ -12,6 +12,7 @@ This is a simple login api for php. This Login is using session and database to 
 	- `changeUserInfo($id, $key, $val)`
 	- `getUserInfo($id)`
 	- `getUserInfoByIdentification($username)`
+- Extra Script Implementation
 	- `holdQuotes($str)`
 	- `reholdQuotes($str)`
 	- `safe_die($code, $status, $desc)`
