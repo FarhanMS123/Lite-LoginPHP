@@ -16,11 +16,16 @@ This is a simple login api for php. This Login is using session and database to 
 	- `holdQuotes($str)`
 	- `reholdQuotes($str)`
 	- `safe_die($code, $status, $desc)`
-- Modify the script
+- What you could make more from the basic script?
 	- Identify user via email and username
+	- Configuring user status
+	- Logging user activity
 	- Configuring key-name for session
+	- Set type of a session
 	- Configuring multiple login
+	- Make Linked-Login Apps
 	- Create meta data for user
+	- Create Linked-Account
 	- Create roles for user
 	- Create allowed and dissalowed feature
 
