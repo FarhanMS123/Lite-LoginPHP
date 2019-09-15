@@ -37,7 +37,7 @@
 	function getUserInfo($id){
 		global $conn;
 		$id = (int)$id;
-		$req1 = $conn->query("SELECT `user_id`, `username`, `passhash` FROM `user_info` WHERE `id`=$id");
+		$req1 = $conn->query("SELECT `user_id`, `username`, `passhash` FROM `user_info` WHERE `user_id`=$id");
 		if($req1->num_rows != 1) return false;
 		return $req1->fetch_assoc();
 	}
@@ -65,11 +65,11 @@
 		
 		return $req3 ? $num : $req3;
 	}
-	function changeUserInfo($id, $key, $val){
-		$id  = holdQuotes($id);
+	function changeUserInfo($user_id, $key, $val){
+		$id  = (int)$user_id;
 		$key = holdQuotes($key);
 		$val = holdQuotes($val);
-		$req1 = $conn->query("UPDATE `user_info` SET `$key`='$val' WHERE `id`='$id'");
+		$req1 = $db->query("UPDATE `user_info` SET `$key`='$val' WHERE `user_id`=$id");
 		
 		return $req1;
 	}
@@ -98,7 +98,7 @@
 		if($req3 == true) return array($id, $hash);
 		return $req3;
 	}
-	function checkLogin($hash, $valid_data=array(), $addExpired=true){ //if you set $valid_data to null, it will return session information based on hash
+	function checkLogin($hash, $valid_data=null, $addExpired=true){ //if you set $valid_data to null, it will return session information based on hash
 		global $conn;
 		
 		$hash = holdQuotes($hash);
@@ -110,7 +110,6 @@
 		if($valid_data == null) return $dataSession;
 		
 		if(time() > $dataSession['expired_time']){
-			$id = (int)$dataSession['id'];
 			$hash = holdQuotes($dataSession['hash']);
 			$req2 = logout(reholdQuotes($hash));
 			return false;
@@ -122,11 +121,11 @@
 					return false;
 				}
 			}
-			$hash = holdQuotes($dataSession['hash']);
-			$expired = (int)strtotime("+1 week");
 			$req3 = true;
 			if($addExpired){
-				$req3 = $conn->query("UPDATE `user_session` SET `expired_time`='$expired' WHERE `hash`='$hash'");
+				$hash = holdQuotes($dataSession['hash']);
+				$expired = (int)strtotime("+1 week");
+				$req3 = $conn->query("UPDATE `user_session` SET `expired_time`=$expired WHERE `hash`='$hash'");
 			}
 			return $req3;
 		}
