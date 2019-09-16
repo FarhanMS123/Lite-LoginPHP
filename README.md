@@ -52,17 +52,16 @@ Change it under `//enviroment configuration`
 ```php
 <?php
 	//enviroment configuration
-	$db_servername = "localhost";
-	$db_username = "root";
-	$db_password = "";
-	$db_dbname = "liteLogin";
+	include "login.api.php";
+	
+	var login = new loginAPI($db_servername, $db_username, $db_password, $db_dbname);
 	
 	...
 ?>
 ```
 
 ## Script Implementation
-### `login($username, $password, $setSession=true, $valid_data=array())`
+### `login->login($username, $password, $setSession=true, $valid_data=array())`
 - `$username` \<string\>
 - `$password` \<string\>
 - `$setSession` \<boolean\> is setting to `false` will make function return `true` while `$username` and `$password` is valid. Default: `true`.
