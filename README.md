@@ -1,4 +1,7 @@
 # Lite-LoginPHP
+
+> DEPRECATED: This project is deprecated due to lack of interest to continue this project. Login API itself has been solved by much framework and library out there. Please use them instead. You could see how Laravel solve it.
+
 This is a simple login api for php. This Login is using session and database to identify user login. <br />
 
 ## Documentation
